@@ -204,6 +204,7 @@ const OLD=['Mia picks up the cheese which says "80% fat-free." The cheese is bou
 const showSample=()=>{$('src').value=SAMPLE;$('sampleNote').textContent='예시 문장입니다. 지우고 점검할 문장을 넣으세요.';};
 try{const s=localStorage.getItem('voc-src');if(s&&s.trim()&&!OLD.includes(s)&&s!==SAMPLE){$('src').value=s;$('sampleNote').textContent='지난번에 점검한 문장을 불러왔어요.';}else showSample();}catch(e){showSample();}
 $('sample').addEventListener('click',()=>{showSample();run();});
+$('src').addEventListener('input',()=>{$('sampleNote').textContent='';});
 $('run').addEventListener('click',()=>{loadMine();try{localStorage.setItem('voc-src',$('src').value)}catch(e){}run();});
 $('clear').addEventListener('click',()=>{$('src').value='';$('sampleNote').textContent='';run();$('src').focus();});
 $('mine').addEventListener('change',()=>{loadMine();run();});
